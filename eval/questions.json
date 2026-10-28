@@ -1,0 +1,29 @@
+{
+  "note": "Synthetic evaluation set over demo_corpus/ (a fictional institute). Written for this prototype; not a public benchmark. 'required' lists fact groups (any alternative in a group counts) that a correct answer must contain; 'forbidden' lists outdated or wrong values that make an answer incorrect. 'relevant' labels relevant chunks as (document, phrase the chunk contains). Unanswerable items are correct only when the system abstains.",
+  "questions": [
+    {"id": "q01", "split": "dev", "category": "simple", "question": "What fee must a student pay to register for a re-examination?", "required": [["1,500", "1500"]], "relevant": [["academic-handbook-2023", "INR 1,500"]]},
+    {"id": "q02", "split": "test", "category": "simple", "question": "By what time must hostel residents return?", "required": [["10:30"]], "relevant": [["hostel-guide-2024", "10:30 pm"]]},
+    {"id": "q03", "split": "test", "category": "simple", "question": "When is the central library open on Saturdays?", "required": [["9 am"], ["5 pm"]], "relevant": [["academic-handbook-2023", "9 am to 5 pm"]]},
+    {"id": "q04", "split": "dev", "category": "simple", "question": "What must be worn at all times in chemistry laboratories?", "required": [["goggles"], ["lab coat"]], "relevant": [["lab-safety-policy", "goggles"]]},
+    {"id": "q05", "split": "test", "category": "simple", "question": "What share of the tuition fee does the merit scholarship cover?", "required": [["50 percent", "50%", "half"]], "relevant": [["scholarship-policy", "50 percent"]]},
+    {"id": "q06", "split": "test", "category": "simple", "question": "What is the minimum pass grade point?", "required": [["4"]], "relevant": [["academic-handbook-2023", "grade point of 4"]]},
+    {"id": "q07", "split": "dev", "category": "complex", "question": "What is the minimum attendance required to sit the end-semester examination, and are there any exceptions?", "required": [["75"], ["condone", "condonation", "medical"]], "relevant": [["academic-handbook-2023", "75 percent"], ["attendance-condonation-circular-2024", "condone"]]},
+    {"id": "q08", "split": "test", "category": "complex", "question": "What CGPA is needed to renew the merit scholarship, and what happens to students on a medical break?", "required": [["8.0"], ["one semester"]], "relevant": [["scholarship-policy", "8.0"], ["scholarship-policy", "medical break"]]},
+    {"id": "q09", "split": "test", "category": "complex", "question": "Within how many days must a medical certificate be submitted to have an attendance shortfall condoned?", "required": [["7", "seven"]], "relevant": [["attendance-condonation-circular-2024", "within 7 days"]]},
+    {"id": "q10", "split": "dev", "category": "multi_doc", "question": "What are the hostel fee and the re-examination fee?", "required": [["85,000", "85000"], ["1,500", "1500"]], "relevant": [["hostel-guide-2024", "85,000"], ["academic-handbook-2023", "INR 1,500"]]},
+    {"id": "q11", "split": "test", "category": "multi_doc", "question": "How soon must a lab incident be reported, and where must volatile solvents be handled?", "required": [["24 hours"], ["fume hood"]], "relevant": [["lab-safety-policy", "24 hours"], ["lab-safety-policy", "fume hood"]]},
+    {"id": "q12", "split": "dev", "category": "conflicting", "question": "What is the late submission penalty per day?", "required": [["5 percent", "5%"]], "forbidden": ["20 percent", "20%"], "relevant": [["assessment-amendment-2025", "5 percent"]]},
+    {"id": "q13", "split": "test", "category": "conflicting", "question": "After how many days late does a submission receive zero marks?", "required": [["five", "5 days"]], "forbidden": ["three days", "3 days"], "relevant": [["assessment-amendment-2025", "five days"]]},
+    {"id": "q14", "split": "dev", "category": "low_quality_source", "question": "How much attendance do students need to write exams?", "required": [["75"]], "forbidden": ["60 percent", "only need 60"], "relevant": [["academic-handbook-2023", "75 percent"]]},
+    {"id": "q15", "split": "test", "category": "low_quality_source", "question": "Do students lose 20 percent of their marks per day for late submissions?", "required": [["5 percent", "5%"]], "relevant": [["assessment-amendment-2025", "5 percent"]]},
+    {"id": "q16", "split": "test", "category": "historical", "question": "What late submission penalty did the 2023 handbook specify?", "required": [["10 percent", "10%"]], "relevant": [["academic-handbook-2023", "10 percent"]]},
+    {"id": "q17", "split": "dev", "category": "unanswerable", "question": "What is the parking fee for students?", "answerable": false, "relevant": []},
+    {"id": "q18", "split": "test", "category": "unanswerable", "question": "How many credits are required to graduate?", "answerable": false, "relevant": []},
+    {"id": "q19", "split": "test", "category": "unanswerable", "question": "What is the penalty for plagiarism?", "answerable": false, "relevant": []},
+    {"id": "q20", "split": "test", "category": "unanswerable", "question": "Who is the vice-chancellor of the institute?", "answerable": false, "relevant": []},
+    {"id": "q21", "split": "test", "category": "unanswerable", "question": "What is the tuition fee for the B.Tech programme?", "answerable": false, "relevant": []},
+    {"id": "q22", "split": "dev", "category": "partial", "question": "What is the annual hostel fee and does it include laundry?", "required": [["85,000", "85000"]], "relevant": [["hostel-guide-2024", "85,000"]]},
+    {"id": "q23", "split": "test", "category": "missing_metadata", "question": "When does orientation week start?", "required": [["last week of july"]], "relevant": [["orientation-notes", "last week of July"]]},
+    {"id": "q24", "split": "test", "category": "simple", "question": "During what hours may guests visit the hostel?", "required": [["4 pm"], ["7 pm"]], "relevant": [["hostel-guide-2024", "4 pm and 7 pm"]]}
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "note": "Synthetic demo corpus for a fictional institute. Reliability categories and dates are declared here, as the article requires, not inferred from writing style.",
+  "documents": [
+    {"file": "academic_handbook_2023.md", "title": "Academic Handbook 2023", "reliability": "official", "published": "2023-07-01", "source_group": "nit-handbook"},
+    {"file": "attendance_condonation_circular_2024.md", "title": "Circular AC/2024/03: Attendance Condonation", "reliability": "official", "published": "2024-01-15", "source_group": "nit-circulars"},
+    {"file": "assessment_amendment_2025.md", "title": "Senate Resolution 2025/11: Late Submission Amendment", "reliability": "official", "published": "2025-06-01", "source_group": "nit-senate"},
+    {"file": "student_forum_post.md", "title": "Forum thread 118: tips for freshers", "reliability": "unverified", "published": "2025-02-10", "source_group": "forum-thread-118"},
+    {"file": "forum_mirror_repost.md", "title": "Mirror of forum thread 118", "reliability": "unverified", "published": "2025-02-12", "source_group": "forum-thread-118"},
+    {"file": "hostel_guide_2024.md", "title": "Hostel Residents' Guide 2024", "reliability": "institutional", "published": "2024-05-20", "source_group": "nit-hostel"},
+    {"file": "lab_safety_policy.pdf", "title": "Laboratory Safety Policy", "reliability": "official", "published": "2024-03-01", "source_group": "nit-safety"},
+    {"file": "scholarship_policy.docx", "title": "Merit Scholarship Policy", "reliability": "official", "published": "2024-08-01", "source_group": "nit-scholarships"},
+    {"file": "orientation_notes.txt", "title": "Orientation notes (author unknown)", "reliability": "unknown", "published": null, "source_group": "orientation-notes"}
+  ]
+}

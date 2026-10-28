@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sentinel-RAG</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header>
+  <div class="brand">
+    <span class="logo" aria-hidden="true">◆</span>
+    <div>
+      <h1>Sentinel-RAG</h1>
+      <p class="sub">Trust-aware adaptive retrieval with claim-level verification and provenance</p>
+    </div>
+  </div>
+  <div id="status" class="status">Starting…</div>
+</header>
+
+<nav role="tablist">
+  <button role="tab" data-tab="ask" class="active">Ask</button>
+  <button role="tab" data-tab="compare">Compare conditions</button>
+  <button role="tab" data-tab="corpus">Corpus</button>
+  <button role="tab" data-tab="eval">Evaluation</button>
+  <button role="tab" data-tab="method">Method</button>
+</nav>
+
+<main>
+<!-- ASK -->
+<section id="tab-ask" class="tab active">
+  <form id="ask-form" class="card">
+    <label for="question">Question about the indexed documents</label>
+    <div class="row">
+      <input id="question" autocomplete="off" placeholder="e.g. What is the minimum attendance required to sit the end-semester examination, and are there any exceptions?">
+      <button type="submit" class="primary" id="ask-btn">Ask</button>
+    </div>
+    <div class="row controls">
+      <label>Condition <select id="condition"></select></label>
+      <label>Generator <select id="generator"></select></label>
+      <label>Model <select id="model"></select></label>
+      <label>Top-k <input id="topk" type="number" min="1" max="10" value="5"></label>
+      <label>Max rounds <input id="rounds" type="number" min="1" max="5" value="3"></label>
+    </div>
+    <div class="examples" id="examples"></div>
+  </form>
+  <div id="result"></div>
+</section>
+
+<!-- COMPARE -->
+<section id="tab-compare" class="tab">
+  <form id="cmp-form" class="card">
+    <label for="cmp-q">Run one question through LLM-only, vanilla RAG, trust-aware RAG and full Sentinel-RAG</label>
+    <div class="row">
+      <input id="cmp-q" autocomplete="off" placeholder="Question">
+      <button type="submit" class="primary">Compare</button>
+    </div>
+    <p class="hint">Same corpus, generator and context size for every condition; only the evidence policy changes.</p>
+  </form>
+  <div id="cmp-result" class="cmp-grid"></div>
+</section>
+
+<!-- CORPUS -->
+<section id="tab-corpus" class="tab">
+  <form id="upload-form" class="card">
+    <h2>Add a document</h2>
+    <p class="hint">PDF, DOCX, TXT or MD. Source reliability and date are declared here and recorded; they are never inferred from writing style. Uploading a changed file with the same name creates a new version and invalidates the old evidence links.</p>
+    <div class="grid2">
+      <label>File <input type="file" id="file" accept=".pdf,.docx,.txt,.md" required></label>
+      <label>Title <input id="u-title" placeholder="optional"></label>
+      <label>Reliability <select id="u-rel"></select></label>
+      <label>Published (YYYY-MM-DD) <input id="u-date" placeholder="leave empty if unknown"></label>
+      <label>Source group (lineage) <input id="u-group" placeholder="defaults to the document id"></label>
+    </div>
+    <div class="row">
+      <button class="primary" type="submit">Upload and index</button>
+      <button type="button" id="reload-demo">Reload demo corpus</button>
+      <button type="button" id="clear-corpus" class="danger">Clear corpus</button>
+    </div>
+    <div id="upload-msg" role="status"></div>
+  </form>
+  <div class="card">
+    <h2>Indexed documents</h2>
+    <div id="docs"></div>
+  </div>
+</section>
+
+<!-- EVAL -->
+<section id="tab-eval" class="tab">
+  <div class="card">
+    <h2>Run the comparison</h2>
+    <p class="hint">Runs every condition on the 24-question synthetic set in <code>eval/questions.json</code> (simple, complex, multi-document, conflicting, low-quality-source, historical, partial, unanswerable). Predictions are saved before scoring under <code>data/runs/</code>. These are measurements on a small synthetic set, not a benchmark result.</p>
+    <div class="row controls">
+      <label>Generator <select id="eval-gen"></select></label>
+      <label>Split <select id="eval-split"><option value="all">all (24)</option><option value="dev">dev (8)</option><option value="test">test (16)</option></select></label>
+      <label class="check"><input type="checkbox" id="eval-ablations" checked> include ablations and budget-matched baseline</label>
+      <button class="primary" id="eval-run">Run evaluation</button>
+    </div>
+    <div id="eval-progress" role="status"></div>
+  </div>
+  <div id="eval-result"></div>
+</section>
+
+<!-- METHOD -->
+<section id="tab-method" class="tab">
+  <div class="card prose" id="method"></div>
+</section>
+</main>
+
+<div id="drawer" class="drawer" hidden>
+  <div class="drawer-inner">
+    <button class="close" id="drawer-close" aria-label="Close">×</button>
+    <div id="drawer-body"></div>
+  </div>
+</div>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
